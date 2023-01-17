@@ -1,0 +1,17 @@
+.hero {
+	border-bottom: 1px solid var(--colour-border);
+	background: var(--colour-hero);
+
+	&_inner {
+		height: 400px;
+		text-align: center;
+	}
+}
+
+.heading {
+	font-size: 3rem;
+}
+
+.subheading {
+
+}
