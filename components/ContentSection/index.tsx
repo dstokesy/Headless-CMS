@@ -1,25 +1,14 @@
-import styles from './index.module.scss'
+import ContentSelector from './ContentSelector/index'
+import allContent from './../../content/test'
 
-type ContentType = {
-	title: string
-	content: string
-};
-
-export default function ContentSection({ children }: {
-	children: React.ReactNode
-}) {
+export default function ContentSection() {
 	return (
-		<div className="pt-12 pb-12">
-			<div className="container mx-auto">
-				<div className="grid grid-cols-12 gap-6">
-					<div className="col-start-1 col-end-13 sm:col-start-1 sm:col-end-7">
-						{children}
-					</div>
-					<div className="col-start-1 col-end-13 sm:col-start-7 sm:col-end-13">
-						{children}
-					</div>
+		<div>
+			{allContent.map((data, i) => (
+				<div key={i}>
+					<ContentSelector Data={data} />
 				</div>
-			</div>
+			))}
 		</div>
 	);
 }
