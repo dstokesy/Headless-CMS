@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../layouts/default'
-import styles from './index.module.scss'
+import Head from 'next/head';
+import Layout, { siteTitle } from '../layouts/default';
+import styles from './index.module.scss';
 import Hero from '../components/Hero/index';
 import ContentSection from '../components/ContentSection/index';
 
-const heading = 'Hello World'
-const subheading = 'Vivamus magna justo lacinia.'
+const heading = 'Hello World';
+const subheading = 'Vivamus magna justo lacinia.';
 
 export default function Index() {
   return (
@@ -19,5 +19,5 @@ export default function Index() {
         <ContentSection />
       </div>
     </Layout>
-  )
+  );
 }

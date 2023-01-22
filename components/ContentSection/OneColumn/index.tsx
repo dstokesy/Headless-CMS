@@ -1,11 +1,14 @@
-import Content from './../Content/index'
+import Content from './../Content/index';
 
-export default function OneColumn({ columnOne }: {
-	columnOne?: String
-}) {
-	return (
-		<div className="container mx-auto">
-			<Content markup={columnOne} />
-		</div>
-	);
+type OneColType = {
+  _group: string;
+  columnOne?: string;
+};
+
+export default function OneColumn({ Data }: { Data: OneColType }) {
+  return (
+    <div className="container mx-auto">
+      {Data.columnOne ? <Content markup={Data.columnOne} /> : ''}
+    </div>
+  );
 }

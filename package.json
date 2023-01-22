@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier-format": "prettier --config .prettierrc './**/*.tsx' --write"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -25,7 +26,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "eslint-config-prettier": "^8.6.0",
     "postcss": "^8.4.20",
+    "prettier": "^2.8.3",
     "sass": "^1.57.1",
     "tailwindcss": "^3.2.4"
   }

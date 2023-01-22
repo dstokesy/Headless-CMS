@@ -1,13 +1,11 @@
-import Head from 'next/head'
-import styles from './default.module.scss'
-import Header from '../components/Header/index'
-import Footer from '../components/Footer/index'
+import Head from 'next/head';
+import styles from './default.module.scss';
+import Header from '../components/Header/index';
+import Footer from '../components/Footer/index';
 
-export const siteTitle = 'Headless CMS'
+export const siteTitle = 'Headless CMS';
 
-export default function Layout({children}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Head>
@@ -24,5 +22,5 @@ export default function Layout({children}: {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
