@@ -6,15 +6,15 @@ type TwoColType = {
   columnTwo?: string;
 };
 
-export default function TwoColumn({ Data }: { Data: TwoColType }) {
+export default function TwoColumn({ data }: { data: TwoColType }) {
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-6">
         <div className="col-start-1 col-end-13 sm:col-start-1 sm:col-end-7">
-          {Data.columnOne ? <Content markup={Data.columnOne} /> : ''}
+          {data.columnOne ? <Content markup={data.columnOne} /> : ''}
         </div>
         <div className="col-start-1 col-end-13 sm:col-start-7 sm:col-end-13">
-          {Data.columnTwo ? <Content markup={Data.columnTwo} /> : ''}
+          {data.columnTwo ? <Content markup={data.columnTwo} /> : ''}
         </div>
       </div>
     </div>

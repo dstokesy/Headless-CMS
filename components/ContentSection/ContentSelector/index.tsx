@@ -9,19 +9,19 @@ type ContentType = {
   columnThree?: string;
 };
 
-export default function ContentSelector({ Data }: { Data: ContentType }) {
-  switch (Data._group) {
+export default function ContentSelector({ data }: { data: ContentType }) {
+  switch (data._group) {
     case 'onecolumn':
-      return <OneColumn Data={Data} />;
+      return <OneColumn data={data} />;
       break;
     case 'twocolumn':
-      return <TwoColumn Data={Data} />;
+      return <TwoColumn data={data} />;
       break;
     case 'threecolumn':
-      return <ThreeColumn Data={Data} />;
+      return <ThreeColumn data={data} />;
       break;
     default:
-      return <div>no</div>;
+      return <div></div>;
       break;
   }
 }

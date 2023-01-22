@@ -1,12 +1,21 @@
-import allContent from './../../content/test';
+import allContent from '../../content';
 import ContentSelector from './ContentSelector/index';
 
-export default function ContentSection() {
+type ContentType = {
+  _group: string;
+  columnOne?: string;
+  columnTwo?: string;
+  columnThree?: string;
+};
+
+export default function ContentSection({ pageId }: { pageId: string }) {
+  const content = allContent[pageId];
+
   return (
     <div>
-      {allContent.map((data, i) => (
+      {content.map(({ data, i }: { data: ContentType; i: number }) => (
         <div key={i}>
-          <ContentSelector Data={data} />
+          <ContentSelector data={data} />
         </div>
       ))}
     </div>

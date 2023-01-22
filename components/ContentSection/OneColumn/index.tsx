@@ -5,10 +5,10 @@ type OneColType = {
   columnOne?: string;
 };
 
-export default function OneColumn({ Data }: { Data: OneColType }) {
+export default function OneColumn({ data }: { data: OneColType }) {
   return (
     <div className="container mx-auto">
-      {Data.columnOne ? <Content markup={Data.columnOne} /> : ''}
+      {data.columnOne ? <Content markup={data.columnOne} /> : ''}
     </div>
   );
 }
