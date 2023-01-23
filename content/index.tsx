@@ -1,4 +1,13 @@
-const content = {
+interface IProps {
+  [key: string]: {
+    _group: string;
+    columnOne?: string;
+    columnTwo?: string;
+    columnThree?: string;
+  }[];
+}
+
+const content: IProps = {
   home: [
     {
       _group: `onecolumn`,
