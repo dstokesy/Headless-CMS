@@ -20,5 +20,5 @@ export function getAllContentIds() {
 export async function getContentData(id: string) {
     return content.filter((page) => {
         return page.slug === id;
-    });
+    })[0];
 }
