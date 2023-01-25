@@ -7,16 +7,14 @@ const heading = 'Hello World';
 const subheading = 'Vivamus magna justo lacinia.';
 
 export default function Index() {
-  return (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <Hero heading={heading} subheading={subheading} />
+    return (
+        <Layout>
+            <Head>
+                <title>{siteTitle}</title>
+            </Head>
+            <Hero heading={heading} subheading={subheading} />
 
-      <div className="pt-12 pb-12">
-        <ContentSection pageId="home" />
-      </div>
-    </Layout>
-  );
+            <div className="pt-12 pb-12"></div>
+        </Layout>
+    );
 }
