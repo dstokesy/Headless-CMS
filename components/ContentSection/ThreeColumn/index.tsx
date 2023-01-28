@@ -1,27 +1,25 @@
-import Content from './../Content/index';
+import { IContent } from '@/content';
+import { Content } from '@/components';
 
-type ThreeColType = {
-    _group: string;
-    columnOne?: string;
-    columnTwo?: string;
-    columnThree?: string;
-};
+export default function ThreeColumn(props: IContent) {
+    const { content } = props;
 
-export default function ThreeColumn({ data }: { data: ThreeColType }) {
     return (
         <div className="container mx-auto">
             <div className="grid grid-cols-12 gap-6">
                 <div className="col-start-1 col-end-13 sm:col-start-1 sm:col-end-5">
-                    {data.columnOne ? <Content markup={data.columnOne} /> : ''}
+                    {content?.columnOne && (
+                        <Content markup={content.columnOne} />
+                    )}
                 </div>
                 <div className="col-start-1 col-end-13 sm:col-start-5 sm:col-end-9">
-                    {data.columnTwo ? <Content markup={data.columnTwo} /> : ''}
+                    {content?.columnTwo && (
+                        <Content markup={content.columnTwo} />
+                    )}
                 </div>
                 <div className="col-start-1 col-end-13 sm:col-start-9 sm:col-end-13">
-                    {data.columnThree ? (
-                        <Content markup={data.columnThree} />
-                    ) : (
-                        ''
+                    {content?.columnThree && (
+                        <Content markup={content.columnThree} />
                     )}
                 </div>
             </div>

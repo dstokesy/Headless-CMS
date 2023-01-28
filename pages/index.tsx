@@ -1,20 +1,17 @@
-import Head from 'next/head';
-import Layout, { siteTitle } from '../layouts/default';
-import Hero from '../components/Hero/index';
-import ContentSection from '../components/ContentSection/index';
+import Page from './[id]';
+import { getContentData } from '../lib/content';
+import { GetStaticProps } from 'next';
+import type { IPageContent } from '../content';
 
-const heading = 'Hello World';
-const subheading = 'Vivamus magna justo lacinia.';
+const IndexPage = (props: IPageContent) => {
+    return <Page {...props} />;
+};
 
-export default function Index() {
-    return (
-        <Layout>
-            <Head>
-                <title>{siteTitle}</title>
-            </Head>
-            <Hero heading={heading} subheading={subheading} />
+export const getStaticProps: GetStaticProps = async () => {
+    const contentData = await getContentData('/');
+    return {
+        props: contentData
+    };
+};
 
-            <div className="pt-12 pb-12"></div>
-        </Layout>
-    );
-}
+export default IndexPage;

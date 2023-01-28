@@ -1,27 +1,25 @@
-import OneColumn from './../OneColumn/index';
-import TwoColumn from './../TwoColumn/index';
-import ThreeColumn from './../ThreeColumn/index';
+import { OneColumn, TwoColumn, ThreeColumn } from '@/components/ContentSection';
+import type { IContent } from '@/content';
 
 type ContentType = {
-    _group: string;
-    columnOne?: string;
-    columnTwo?: string;
-    columnThree?: string;
+    data: IContent['content'];
 };
 
-export default function ContentSelector({ data }: { data: ContentType }) {
+export default function ContentSelector(props: ContentType) {
+    const { data } = props;
+
     switch (data._group) {
         case 'onecolumn':
-            return <OneColumn data={data} />;
+            return <OneColumn content={data} />;
             break;
         case 'twocolumn':
-            return <TwoColumn data={data} />;
+            return <TwoColumn content={data} />;
             break;
         case 'threecolumn':
-            return <ThreeColumn data={data} />;
+            return <ThreeColumn content={data} />;
             break;
         default:
-            return <div></div>;
+            return <></>;
             break;
     }
 }

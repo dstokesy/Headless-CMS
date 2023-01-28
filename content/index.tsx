@@ -1,21 +1,32 @@
-interface IProps {
+export interface IPageContent {
     slug: string;
     title: string;
+    hero?: {
+        heading: string;
+        subheading: string;
+    };
+    content: IContent['content'][];
+}
+
+export interface IContent {
     content: {
-        _group: string;
+        _group: ColumnTypes;
         columnOne?: string;
         columnTwo?: string;
         columnThree?: string;
-    }[];
+    };
 }
-[];
 
-type IPropsArray = IProps[];
+type ColumnTypes = 'onecolumn' | 'twocolumn' | 'threecolumn'; // only these values will be valid when entering _group val
 
-const content: IPropsArray = [
+const content: IPageContent[] = [
     {
-        slug: 'home',
+        slug: '/',
         title: 'Home',
+        hero: {
+            heading: 'HomePAGE Hero',
+            subheading: 'Vivamus magna justo lacinia.'
+        },
         content: [
             {
                 _group: `onecolumn`,
@@ -37,6 +48,10 @@ const content: IPropsArray = [
     {
         slug: 'frontend',
         title: 'Frontend',
+        hero: {
+            heading: 'Frontend page hero',
+            subheading: 'Vivamus magna justo lacinia.'
+        },
         content: [
             {
                 _group: `onecolumn`,

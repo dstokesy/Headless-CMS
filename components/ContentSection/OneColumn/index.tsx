@@ -1,14 +1,12 @@
-import Content from './../Content/index';
+import { IContent } from '@/content';
+import { Content } from '@/components';
 
-type OneColType = {
-    _group: string;
-    columnOne?: string;
-};
+export default function OneColumn(props: IContent) {
+    const { content } = props;
 
-export default function OneColumn({ data }: { data: OneColType }) {
     return (
         <div className="container mx-auto">
-            {data.columnOne ? <Content markup={data.columnOne} /> : ''}
+            {content.columnOne && <Content markup={content.columnOne} />}
         </div>
     );
 }

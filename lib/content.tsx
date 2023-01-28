@@ -1,8 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import content from './../content/index';
-
-const contentDirectory = path.join(process.cwd(), 'content');
+import content from '@/content';
 
 export function getAllContentIds() {
     return (

@@ -1,7 +1,12 @@
 import xss from 'xss';
 import styles from './../index.module.scss';
 
-export default function Content({ markup }: { markup: string }) {
+interface IMarkupProps {
+    markup: string;
+}
+
+export default function Content(props: IMarkupProps) {
+    const { markup } = props;
     return (
         <div
             className={styles.content}
