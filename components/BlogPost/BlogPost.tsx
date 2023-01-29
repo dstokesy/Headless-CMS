@@ -10,7 +10,7 @@ type BlogPostType = {
 export default function BlogPosts(props: BlogPostType) {
     const post = props.post;
     return (
-        <Link href={`/posts/${post.slug}`} className={styles.card}>
+        <Link href={`/blog/${post.slug}`} className={styles.card}>
             <Image
                 src={post.image}
                 className={styles.img}
