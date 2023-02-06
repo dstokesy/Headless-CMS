@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Layout from '../../layouts';
+import { apiEndPoint } from '../../lib/api';
 import { Hero, BlogPost } from '@/components';
 import type { IBlogPost } from '../../content/blog';
-import { getSortedPosts } from '../../lib/posts';
 import { GetStaticProps } from 'next';
 
 interface IBlogIndexProps {
@@ -31,7 +31,9 @@ const BlogIndex: React.FC<IBlogIndexProps> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const allPostsData = getSortedPosts();
+    const res = await fetch(apiEndPoint + 'blog/posts/');
+    const allPostsData = await res.json();
+
     return {
         props: {
             posts: allPostsData

@@ -11,16 +11,9 @@ export default function BlogPosts(props: BlogPostType) {
     const post = props.post;
     return (
         <Link href={`/blog/${post.slug}`} className={styles.card}>
-            <Image
-                src={post.image}
-                className={styles.img}
-                height={144}
-                width={144}
-                alt={post.title}
-            />
             <div className={styles.card_inner}>
                 <div className={styles.title}>{post.title}</div>
-                <div>{post.date}</div>
+                <div>{post.published_at}</div>
             </div>
         </Link>
     );
