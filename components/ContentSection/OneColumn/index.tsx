@@ -6,7 +6,7 @@ export default function OneColumn(props: IContent) {
 
     return (
         <div className="container mx-auto">
-            {content.columnOne && <Content markup={content.columnOne} />}
+            {content.content && <Content markup={content.content} />}
         </div>
     );
 }

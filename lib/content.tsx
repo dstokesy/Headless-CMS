@@ -6,7 +6,7 @@ export function getAllContentIds() {
         content.map((page) => {
             return {
                 params: {
-                    id: page.slug
+                    id: page.url
                 }
             };
         })
@@ -15,6 +15,6 @@ export function getAllContentIds() {
 
 export async function getContentData(id: string) {
     return content.filter((page) => {
-        return page.slug === id;
+        return page.url === id;
     })[0];
 }

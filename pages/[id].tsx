@@ -30,7 +30,12 @@ const Page: React.FC<IPageContent> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = getAllContentIds();
+    const res = await fetch(
+        'https://www.headlesscms-october.internal/api/v1/pages/slugs'
+    );
+    const paths = await res.json();
+    console.log('paths', paths);
+
     return {
         paths,
         fallback: false

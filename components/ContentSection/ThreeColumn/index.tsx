@@ -8,18 +8,18 @@ export default function ThreeColumn(props: IContent) {
         <div className="container mx-auto">
             <div className="grid grid-cols-12 gap-6">
                 <div className="col-start-1 col-end-13 sm:col-start-1 sm:col-end-5">
-                    {content?.columnOne && (
-                        <Content markup={content.columnOne} />
+                    {content?.content_left && (
+                        <Content markup={content.content_left} />
                     )}
                 </div>
                 <div className="col-start-1 col-end-13 sm:col-start-5 sm:col-end-9">
-                    {content?.columnTwo && (
-                        <Content markup={content.columnTwo} />
+                    {content?.content_centre && (
+                        <Content markup={content.content_centre} />
                     )}
                 </div>
                 <div className="col-start-1 col-end-13 sm:col-start-9 sm:col-end-13">
-                    {content?.columnThree && (
-                        <Content markup={content.columnThree} />
+                    {content?.content_right && (
+                        <Content markup={content.content_right} />
                     )}
                 </div>
             </div>
