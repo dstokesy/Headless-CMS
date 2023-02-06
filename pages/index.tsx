@@ -1,5 +1,5 @@
 import Page from './[id]';
-import { getContentData } from '../lib/content';
+import { apiEndPoint } from '../lib/api';
 import { GetStaticProps } from 'next';
 import type { IPageContent } from '../content';
 
@@ -8,7 +8,9 @@ const IndexPage = (props: IPageContent) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const contentData = await getContentData('/');
+    const res = await fetch(apiEndPoint + 'pages/load/home');
+    const contentData = await res.json();
+
     return {
         props: contentData
     };

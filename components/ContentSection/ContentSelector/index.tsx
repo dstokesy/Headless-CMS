@@ -2,21 +2,24 @@ import { OneColumn, TwoColumn, ThreeColumn } from '@/components/ContentSection';
 import type { IContent } from '@/content';
 
 type ContentType = {
-    data: IContent['content'];
+    data: IContent['content_blocks'];
 };
 
 export default function ContentSelector(props: ContentType) {
     const { data } = props;
 
-    switch (data._group) {
+    let group = data._group.replace('blocks[', '');
+    group = group.replace(']', '');
+
+    switch (group) {
         case 'onecolumn':
-            return <OneColumn content={data} />;
+            return <OneColumn content_blocks={data} />;
             break;
         case 'twocolumn':
-            return <TwoColumn content={data} />;
+            return <TwoColumn content_blocks={data} />;
             break;
         case 'threecolumn':
-            return <ThreeColumn content={data} />;
+            return <ThreeColumn content_blocks={data} />;
             break;
         default:
             return <></>;
