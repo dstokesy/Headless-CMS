@@ -12,8 +12,6 @@ const Layout = ({ layout, children }: IProps): JSX.Element => {
         default:
             return <DefaultLayout>{children}</DefaultLayout>;
     }
-
-    return <></>;
 };
 
 export default Layout;
