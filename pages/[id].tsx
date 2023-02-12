@@ -6,23 +6,32 @@ import { apiEndPoint } from '../lib/api';
 import { ContentSelector, Hero } from '@/components';
 
 import type { IPageContent } from '@/content';
+import type { IMenuItem } from '../content/menu';
 
-const Page: React.FC<IPageContent> = (props) => {
-    const { hero_title, hero_subtitle, content_blocks } = props;
+interface IPageData {
+    contentData: IPageContent;
+    menuItems: IMenuItem[];
+}
+
+const Page: React.FC<IPageData> = (props) => {
+    const contentData = props.contentData;
 
     return (
-        <Layout layout="default">
+        <Layout layout="default" menuitems={props.menuItems}>
             <Head>
-                <title>{props.title}</title>
+                <title>{contentData.title}</title>
             </Head>
 
-            {hero_title && hero_subtitle && (
-                <Hero heading={hero_title} subheading={hero_subtitle} />
+            {contentData.hero_title && contentData.hero_subtitle && (
+                <Hero
+                    heading={contentData.hero_title}
+                    subheading={contentData.hero_subtitle}
+                />
             )}
 
             <div className="pt-12 pb-12">
-                {content_blocks &&
-                    content_blocks.map((item) => (
+                {contentData.content_blocks &&
+                    contentData.content_blocks.map((item) => (
                         <ContentSelector key={item._group} data={item} />
                     ))}
             </div>
@@ -60,8 +69,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     );
     const contentData = await res.json();
 
+    const resMenu = await fetch(apiEndPoint + 'menus/navigation');
+    const menuItems = await resMenu.json();
+
     return {
-        props: contentData
+        props: {
+            contentData,
+            menuItems
+        }
     };
 };
 

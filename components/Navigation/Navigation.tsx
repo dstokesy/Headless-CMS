@@ -1,52 +1,25 @@
 import styles from './navigation.module.scss';
 import Link from 'next/link';
 
-interface INavProps {
-    id: string;
-    title: string;
-    url: string;
-}
+import type { IMenuItem } from '../../content/menu';
 
-const navItems: INavProps[] = [
-    {
-        id: 'home',
-        title: 'Home',
-        url: '/'
-    },
-    {
-        id: 'frontend',
-        title: 'Frontend',
-        url: '/frontend'
-    },
-    {
-        id: 'cms',
-        title: 'CMS',
-        url: '/cms'
-    },
-    {
-        id: 'blog',
-        title: 'Blog',
-        url: '/blog'
-    },
-    {
-        id: 'contact',
-        title: 'Contact',
-        url: '/contact'
-    }
-];
-
-export default function Navigation() {
+export const Navigation: React.FC<{
+    menuitems?: IMenuItem[];
+}> = ({ menuitems }) => {
     return (
         <nav className={styles.nav}>
             <ul className="flex justify-end gap-6">
-                {navItems.map(({ id, title, url }) => (
-                    <li key={id}>
-                        <Link href={url} className={styles.nav_item}>
-                            {title}
-                        </Link>
-                    </li>
-                ))}
+                {menuitems &&
+                    menuitems.map(({ id, title, url }) => (
+                        <li key={id}>
+                            <Link href={url} className={styles.nav_item}>
+                                {title}
+                            </Link>
+                        </li>
+                    ))}
             </ul>
         </nav>
     );
-}
+};
+
+export default Navigation;
