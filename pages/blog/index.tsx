@@ -1,17 +1,21 @@
 import Head from 'next/head';
-import Layout from '../../layouts';
 import { apiEndPoint } from '../../lib/api';
-import { Hero, BlogPost } from '@/components';
-import type { IBlogPost } from '../../content/blog';
 import { GetStaticProps } from 'next';
+
+import Layout from '../../layouts';
+import { Hero, BlogPost } from '@/components';
+
+import type { IMenuItem } from '../../content/menu';
+import type { IBlogPost } from '../../content/blog';
 
 interface IBlogIndexProps {
     posts: IBlogPost[];
+    menuItems: IMenuItem[];
 }
 
 const BlogIndex: React.FC<IBlogIndexProps> = (props) => {
     return (
-        <Layout>
+        <Layout menuitems={props.menuItems}>
             <Head>
                 <title>Blog</title>
             </Head>
@@ -32,11 +36,15 @@ const BlogIndex: React.FC<IBlogIndexProps> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(apiEndPoint + 'blog/posts/');
-    const allPostsData = await res.json();
+    const posts = await res.json();
+
+    const resMenu = await fetch(apiEndPoint + 'menus/navigation');
+    const menuItems = await resMenu.json();
 
     return {
         props: {
-            posts: allPostsData
+            posts,
+            menuItems
         }
     };
 };
