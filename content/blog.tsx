@@ -13,4 +13,5 @@ export interface IBlogPost {
     metadata: boolean;
     summary: string;
     has_summary: boolean;
+    image?: string;
 }

@@ -9,11 +9,27 @@ type BlogPostType = {
 
 export default function BlogPosts(props: BlogPostType) {
     const post = props.post;
+
+    let imageMarkup;
+
+    if (post.image) {
+        imageMarkup = (
+            <Image
+                src={post.image}
+                width={568}
+                height={349}
+                alt={post.title}
+                className={styles.img}
+            />
+        );
+    }
+
     return (
         <Link href={`/blog/${post.slug}`} className={styles.card}>
             <div className={styles.card_inner}>
+                {imageMarkup}
                 <div className={styles.title}>{post.title}</div>
-                <div>{post.published_at}</div>
+                <div>{post.excerpt}</div>
             </div>
         </Link>
     );
