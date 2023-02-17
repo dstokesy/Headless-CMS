@@ -18,7 +18,7 @@ const BlogIndex: React.FC<IBlogIndexProps> = (props) => {
                 <title>Contact</title>
             </Head>
             <Hero heading="Contact" subheading="Vivamus magna justo lacinia." />
-            <div className="pt-12 pb-12">
+            <div className="pt-12 pb-12 px-3">
                 <div className="container mx-auto">
                     <Form />
                 </div>

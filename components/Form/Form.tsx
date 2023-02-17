@@ -45,12 +45,27 @@ export default function Form() {
         };
 
         // Send the form data to our forms API on Vercel and get a response.
-        // const response = await fetch(endpoint, options);
+        const response = await fetch(endpoint, options);
 
         // Get the response data from server as JSON.
         // If server returns the name submitted, that means the form works.
-        // const result = await response.json();
-        // alert(`Is this your full name: ${result.data}`);
+        const result = await response.json();
+
+        if (result === true) {
+            alert('Form successfully submitted');
+
+            if (nameInput) {
+                nameInput.value = '';
+            }
+
+            if (emailInput) {
+                emailInput.value = '';
+            }
+
+            if (messageInput) {
+                messageInput.value = '';
+            }
+        }
     };
 
     return (
