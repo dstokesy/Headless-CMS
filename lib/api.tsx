@@ -1,1 +1,1 @@
-export const apiEndPoint = 'http://www.headlesscms-october.co.uk/api/v1/';
+export const apiEndPoint = 'https://www.headlesscms-october.co.uk/api/v1/';
