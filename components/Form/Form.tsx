@@ -19,51 +19,60 @@ export default function Form() {
             'form_message'
         ) as HTMLInputElement;
 
-        // Get data from the form.
-        const data = {
-            name: nameInput ? nameInput.value : false,
-            email: emailInput ? emailInput.value : false,
-            message: messageInput ? messageInput.value : false
-        };
+        let error;
 
-        // Send the data to the server in JSON format.
-        const JSONdata = JSON.stringify(data);
+        if (!messageInput || messageInput.value == '') {
+            error = 'Message is required';
+        }
 
-        // API endpoint where we send form data.
-        const endpoint = apiEndPoint + 'form/contact';
+        if (!emailInput || emailInput.value == '') {
+            error = 'Email address is required';
+        }
 
-        // Form the request for sending data to the server.
-        const options = {
-            // The method is POST because we are sending data.
-            method: 'POST',
-            // Tell the server we're sending JSON.
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            // Body of the request is the JSON data we created above.
-            body: JSONdata
-        };
+        if (error) {
+            alert(error);
+        } else {
+            // Get data from the form.
+            const data = {
+                name: nameInput ? nameInput.value : false,
+                email: emailInput ? emailInput.value : false,
+                message: messageInput ? messageInput.value : false
+            };
 
-        // Send the form data to our forms API on Vercel and get a response.
-        const response = await fetch(endpoint, options);
+            // Send the data to the server in JSON format.
+            const JSONdata = JSON.stringify(data);
 
-        // Get the response data from server as JSON.
-        // If server returns the name submitted, that means the form works.
-        const result = await response.json();
+            const endpoint = apiEndPoint + 'form/contact';
 
-        if (result === true) {
-            alert('Form successfully submitted');
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSONdata
+            };
 
-            if (nameInput) {
-                nameInput.value = '';
-            }
+            // Send the form data to our forms API on Vercel and get a response.
+            const response = await fetch(endpoint, options);
 
-            if (emailInput) {
-                emailInput.value = '';
-            }
+            // Get the response data from server as JSON.
+            // If server returns the name submitted, that means the form works.
+            const result = await response.json();
 
-            if (messageInput) {
-                messageInput.value = '';
+            if (result === true) {
+                alert('Form successfully submitted');
+
+                if (nameInput) {
+                    nameInput.value = '';
+                }
+
+                if (emailInput) {
+                    emailInput.value = '';
+                }
+
+                if (messageInput) {
+                    messageInput.value = '';
+                }
             }
         }
     };
