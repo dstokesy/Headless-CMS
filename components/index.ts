@@ -5,3 +5,4 @@ export * from './Footer';
 export * from './Navigation';
 export * from './Hamburger';
 export * from './BlogPost';
+export * from './Form';
