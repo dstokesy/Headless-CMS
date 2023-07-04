@@ -2,14 +2,16 @@ import styles from './navigation.module.scss';
 import Link from 'next/link';
 import cx from 'classnames';
 
-import type { IMenuItem } from '../../content/menu';
+import { selectMenuState } from '../../store/menuSlice';
+import { useSelector } from 'react-redux';
 
 type NavigationStyleType = 'horizontal' | 'vertical';
 
 export const Navigation: React.FC<{
-    menuitems?: IMenuItem[];
     navstyle: NavigationStyleType;
-}> = ({ menuitems, navstyle }) => {
+}> = ({ navstyle }) => {
+    const menuitems = useSelector(selectMenuState);
+
     return (
         <nav className={styles.nav}>
             <ul

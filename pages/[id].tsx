@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
+import { useDispatch } from 'react-redux';
+import { setMenuState } from '../store/menuSlice';
+
 import Layout from '../layouts';
 import { apiEndPoint } from '../lib/api';
 import { ContentSelector, Hero } from '@/components';
@@ -16,8 +19,11 @@ interface IPageData {
 const Page: React.FC<IPageData> = (props) => {
     const contentData = props.contentData;
 
+    const dispatch = useDispatch();
+    dispatch(setMenuState(props.menuItems));
+
     return (
-        <Layout layout="default" menuitems={props.menuItems}>
+        <Layout layout="default">
             <Head>
                 <title>{contentData.title}</title>
             </Head>

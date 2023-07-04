@@ -2,13 +2,10 @@ import { useState } from 'react';
 import cx from 'classnames';
 import styles from './mobilenavigation.module.scss';
 
-import type { IMenuItem } from '../../content/menu';
 import { Navigation, Hamburger } from '@/components';
 import { disableBodyScroll, enableBodyScroll } from '../../lib/BodyScroll';
 
-export const MobileNavigation: React.FC<{
-    menuitems?: IMenuItem[];
-}> = ({ menuitems }) => {
+export const MobileNavigation: React.FC = () => {
     const [active, setActive] = useState(false);
 
     const showMenu = () => {
@@ -39,7 +36,7 @@ export const MobileNavigation: React.FC<{
                 </div>
 
                 <div className="p-6">
-                    <Navigation menuitems={menuitems} navstyle="vertical" />
+                    <Navigation navstyle="vertical" />
                 </div>
             </div>
         </div>

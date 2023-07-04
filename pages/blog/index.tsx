@@ -2,6 +2,9 @@ import Head from 'next/head';
 import { apiEndPoint } from '../../lib/api';
 import { GetStaticProps } from 'next';
 
+import { useDispatch } from 'react-redux';
+import { setMenuState } from '../../store/menuSlice';
+
 import Layout from '../../layouts';
 import { Hero, BlogPost } from '@/components';
 
@@ -14,8 +17,11 @@ interface IBlogIndexProps {
 }
 
 const BlogIndex: React.FC<IBlogIndexProps> = (props) => {
+    const dispatch = useDispatch();
+    dispatch(setMenuState(props.menuItems));
+
     return (
-        <Layout menuitems={props.menuItems}>
+        <Layout>
             <Head>
                 <title>Blog</title>
             </Head>

@@ -2,6 +2,9 @@ import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { apiEndPoint } from '../../lib/api';
 
+import { useDispatch } from 'react-redux';
+import { setMenuState } from '../../store/menuSlice';
+
 import Layout from '../../layouts';
 import { Hero } from '@/components';
 import Content from './../../components/ContentSection/Content';
@@ -17,8 +20,11 @@ interface IBlogPostPage {
 const BlogPostPage: React.FC<IBlogPostPage> = (props) => {
     const postData = props.postData;
 
+    const dispatch = useDispatch();
+    dispatch(setMenuState(props.menuItems));
+
     return (
-        <Layout layout="default" menuitems={props.menuItems}>
+        <Layout layout="default">
             <Head>
                 <title>{postData.title}</title>
             </Head>

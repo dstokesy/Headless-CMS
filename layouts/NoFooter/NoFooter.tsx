@@ -4,13 +4,12 @@ import { Header } from '@/components';
 import styles from './nofooter.module.scss';
 
 export const NoFooter: React.FC<{
-    menuitems?: IMenuItem[];
     children: React.ReactNode;
-}> = ({ menuitems, children }) => {
+}> = ({ children }) => {
     return (
         <div>
             <div className={styles.layout}>
-                <Header menuitems={menuitems} />
+                <Header />
                 {children}
             </div>
         </div>

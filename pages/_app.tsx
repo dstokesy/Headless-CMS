@@ -1,10 +1,13 @@
 import '../styles/global.scss';
 import { AppProps } from 'next/app';
+import { wrapper } from '../store/store';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
     return (
         <main>
             <Component {...pageProps} />
         </main>
     );
 }
+
+export default wrapper.withRedux(App);

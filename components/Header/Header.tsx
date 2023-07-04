@@ -2,14 +2,10 @@ import styles from './header.module.scss';
 import Link from 'next/link';
 import cx from 'classnames';
 
-import type { IMenuItem } from '../../content/menu';
-
 import { MobileNavigation } from './../MobileNavigation';
 import { Navigation } from '@/components';
 
-export const Header: React.FC<{
-    menuitems?: IMenuItem[];
-}> = ({ menuitems }) => {
+export const Header: React.FC = () => {
     return (
         <header className={cx(styles.header, 'p-6')}>
             <div className="container mx-auto">
@@ -21,13 +17,10 @@ export const Header: React.FC<{
                     </div>
                     <div className="col-start-9 col-end-13 md:col-start-5 lg:col-start-4">
                         <div className="md:hidden text-right">
-                            <MobileNavigation menuitems={menuitems} />
+                            <MobileNavigation />
                         </div>
                         <div className="hidden md:block">
-                            <Navigation
-                                menuitems={menuitems}
-                                navstyle="horizontal"
-                            />
+                            <Navigation navstyle="horizontal" />
                         </div>
                     </div>
                 </div>
